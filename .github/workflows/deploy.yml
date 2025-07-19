@@ -1,4 +1,4 @@
-name: Deploy with Dokploy
+name: Deploy to Dokploy
 
 on:
   push:
@@ -10,10 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to Dokploy
-        uses: dokploy/github-dokploy-action@v1
-        with:
-          token: ${{ secrets.DOKPLOY_API_KEY }}
+      - name: Trigger Dokploy Deployment
+        run: |
+          curl -X POST https://api.dokploy.com/v1/deploy \
+            -H "Authorization: Bearer ${{ secrets.DOKPLOY_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "appId": "tu_app_id"
+            }'
