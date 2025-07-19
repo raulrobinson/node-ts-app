@@ -10,7 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Dokploy on Self-hosted VPS
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build project
+        run: echo "Building project..."
+
+      - name: Trigger 1 Dokploy on Self-hosted VPS
         run: |
           curl -X POST http://173.212.245.233:3000/api/deploy \
             -H "Authorization: Bearer ${{ secrets.DOKPLOY_API_KEY }}" \
