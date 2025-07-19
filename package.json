@@ -1,6 +1,10 @@
 {
   "name": "node-ts-app",
   "version": "1.0.0",
+  "author": {
+    "name": "Raul Bolivar",
+    "email": "rasysbox@hotmail.com"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
