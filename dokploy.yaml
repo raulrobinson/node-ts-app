@@ -1,0 +1,6 @@
+project: node-ts-app
+build:
+  command: npm run build
+start:
+  command: npm run start
+  port: 3000
