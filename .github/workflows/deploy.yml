@@ -2,27 +2,18 @@ name: Deploy with Dokploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Deploy to Dokploy
+        uses: dokploy/github-dokploy-action@v1
         with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Dokploy Deploy
-        uses: dokploy/github-action@v1
-        with:
-          apiKey: ${{ secrets.DOKPLOY_API_KEY }}
+          token: ${{ secrets.DOKPLOY_API_KEY }}
