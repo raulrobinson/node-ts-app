@@ -18,9 +18,10 @@ jobs:
 
       - name: Trigger 1 Dokploy on Self-hosted VPS
         run: |
-          curl -X POST http://173.212.245.233:3000/api/deploy \
+          curl -X POST http://173.212.245.233:3000/api/application.deploy \
             -H "Authorization: Bearer ${{ secrets.DOKPLOY_API_KEY }}" \
+            -H "accept: application/json" \
             -H "Content-Type: application/json" \
             -d '{
-              "appId": "tu_app_id"
+              "applicationId": "string"
             }'
